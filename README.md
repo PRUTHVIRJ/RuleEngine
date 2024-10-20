@@ -51,6 +51,7 @@ Create a new rule by sending a string representing the rule.
 ```bash
 POST http://localhost:8081/api/rules/create Content-Type: text/plain
 Body: age = 40 AND salary > 30000
+\
 
 Description: This API takes a rule string and returns the corresponding Abstract Syntax Tree (AST) representation.
 

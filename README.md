@@ -28,7 +28,7 @@ You can run this project using any Java IDE, such as IntelliJ IDEA.
 1. Clone the repository:
    ```bash
    git clone https://github.com/PRUTHVIRJ/RuleEngine.git
-   cd RuleEngine
+   cd RuleEngine```
 
 # Rule Engine Application
 
@@ -51,7 +51,7 @@ Create a new rule by sending a string representing the rule.
 ```bash
 POST http://localhost:8081/api/rules/create Content-Type: text/plain
 Body: age = 40 AND salary > 30000
-\
+```
 
 Description: This API takes a rule string and returns the corresponding Abstract Syntax Tree (AST) representation.
 
@@ -61,6 +61,7 @@ Combine multiple rules into a single AST.
 ```bash
 POST http://localhost:8081/api/rules/combine Content-Type: application/json
 Body: [ "(age > 30 AND department = 'Sales')", "(age < 25 AND department = 'Marketing')", "(salary > 50000 OR experience > 5)" ]
+```
 
 Description: This API accepts a list of rule strings and returns the combined AST.
 
@@ -70,6 +71,7 @@ Evaluate a specific rule against user attributes.
 ```bash
 POST http://localhost:8081/api/rules/evaluate Content-Type: application/json
 Body: { "age": "40", "salary": "31000" }
+```
 
 Description: This API checks if the user meets the criteria defined by the combined rule.
 
@@ -79,7 +81,9 @@ The application uses an in-memory H2 database for data storage. You can access t
 JDBC URL: jdbc:h2:mem:testdb
 User: sa
 Password: (leave blank)
-
+```bash
+http://localhost:8081/h2-console
+```
 
 ## Test Cases
 

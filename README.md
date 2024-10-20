@@ -30,3 +30,69 @@ You can run this project using any Java IDE, such as IntelliJ IDEA.
    git clone https://github.com/PRUTHVIRJ/RuleEngine.git
    cd RuleEngine
 
+# Rule Engine Application
+
+This repository contains a Java-based rule engine application with RESTful APIs for creating, combining, and evaluating rules.
+
+## Getting Started
+
+### Building and Running the Application
+
+1. Import the project into your Java IDE.
+2. Run the main application class to start the server.
+
+## API Endpoints
+
+The following API endpoints are available for managing rules:
+
+### 1. Create Rule
+
+Create a new rule by sending a string representing the rule.
+```bash
+POST http://localhost:8081/api/rules/create Content-Type: text/plain
+Body: age = 40 AND salary > 30000
+
+Description: This API takes a rule string and returns the corresponding Abstract Syntax Tree (AST) representation.
+
+### 2. Combine Rules
+
+Combine multiple rules into a single AST.
+```bash
+POST http://localhost:8081/api/rules/combine Content-Type: application/json
+Body: [ "(age > 30 AND department = 'Sales')", "(age < 25 AND department = 'Marketing')", "(salary > 50000 OR experience > 5)" ]
+
+Description: This API accepts a list of rule strings and returns the combined AST.
+
+### 3. Evaluate Rule
+
+Evaluate a specific rule against user attributes.
+```bash
+POST http://localhost:8081/api/rules/evaluate Content-Type: application/json
+Body: { "age": "40", "salary": "31000" }
+
+Description: This API checks if the user meets the criteria defined by the combined rule.
+
+## Database Access
+
+The application uses an in-memory H2 database for data storage. You can access the H2 console at:
+JDBC URL: jdbc:h2:mem:testdb
+User: sa
+Password: (leave blank)
+
+
+## Test Cases
+
+1. Create individual rules using the create_rule API and verify their AST representation.
+2. Combine example rules using the combine_rules API and ensure the resulting AST reflects the combined logic.
+3. Implement sample JSON data and test the evaluate_rule API for various scenarios.
+
+## Bonus Features
+
+Consider implementing these advanced features:
+
+1. Error Handling: Implement error handling for invalid rule strings or data formats (e.g., missing operators, invalid comparisons).
+2. Attribute Validation: Ensure attributes are part of a catalog.
+3. Rule Modification: Enable modification of existing rules.
+4. Custom Functions: Extend the system to support user-defined functions within the rule language for advanced conditions.
+
+
